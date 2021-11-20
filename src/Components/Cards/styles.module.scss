@@ -1,22 +1,30 @@
 .card {
-    width: 500px;
+    width: 25rem;
     margin: 1rem;
-    //padding: 1rem;
     cursor: pointer;
     border-radius: 1rem;
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+    transition: 0.2s;
 
-    border: 1px solid black;
+    p { 
+        font-size: 0.875rem;
+        color: gray;
+        padding: 0rem 1rem 1rem 1rem;
+    }
 
-    p {
-        color: grey;
-        padding: 1rem;
+    .cardInfo {
+        display: flex;
+        justify-content: space-between;
     }
 }
 
 .card:hover{
+
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.16);
+    transition: 0.5s;
+
     h1 {
-        transition: 0.2s;
         color: rgb(66, 66, 66);
     }
+
 }
