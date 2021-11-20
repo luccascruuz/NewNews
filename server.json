@@ -1,0 +1,24 @@
+{
+  "news": [
+    {
+      "id": "1",
+      "title": "Brasil chega a 22 milhões de casos de Covid registrados; média móvel de mortos é a menor desde abril de 2020",
+      "caption": "País contabiliza 612.411 óbitos e 22.001.369 casos de coronavírus desde o início da pandemia, segundo balanço do consórcio de veículos de imprensa com dados das secretarias de Saúde. Foram em média 211 vítimas por dia na última semana.",
+      "text": "O Brasil registrou nesta sexta-feira (19) 234 mortes por Covid-19 nas últimas 24 horas, com o total de óbitos chegando a 612.411 desde o início da pandemia. Com isso, a média móvel de mortes nos últimos 7 dias ficou em 211 --a menor marca registrada desde 23 de abril de 2020 (quando estava em 199). Em comparação à média de 14 dias atrás, a variação foi de -11% e aponta estabilidade pelo sexto dia seguido. Os números estão no novo levantamento do consórcio de veículos de imprensa sobre a situação da pandemia de coronavírus no Brasil, consolidados às 20h desta sexta. O balanço é feito a partir de dados das secretarias estaduais de Saúde.",
+      "authorId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Alckmin e Lula estão mais próximos de pacto de não agressão do que de aliança formal",
+      "text": "Interlocutores de Geraldo Alckmin identificaram uma estratégia eleitoral nos movimentos mais recentes do ex-governador em manter no noticiário a possibilidade de ser candidato a vice na chapa do petista Luiz Inácio Lula da Silva em 2022.",
+      "authorId": "1"
+    }
+  ],
+
+  "author": [
+    {
+      "id": "1",
+      "name": "Luccas Ribeiro"
+    }
+  ]
+}
