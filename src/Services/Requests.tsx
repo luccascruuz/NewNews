@@ -1,4 +1,8 @@
-import { IResponseRequest } from "../Interfaces/DataTypes";
+import {
+  IPayloadAuthor,
+  IPayloadNews,
+  IResponseRequest,
+} from "../Interfaces/DataTypes";
 import { IAuthor } from "../Interfaces/States/AuthorsTypes";
 import { INews } from "../Interfaces/States/NewsTypes";
 import AxiosApi from "./AxiosApi";
@@ -16,6 +20,13 @@ const Requests = {
         `/news/${id}`
       );
 
+      return request;
+    },
+
+    addNews: (payload: IPayloadNews) => {
+      const request: Promise<IResponseRequest<INews>> = AxiosApi.post(`/news`, {
+        ...payload,
+      });
       return request;
     },
   },
@@ -42,6 +53,16 @@ const Requests = {
       );
 
       return resquest;
+    },
+
+    addAuthor: (payload: IPayloadAuthor) => {
+      const request: Promise<IResponseRequest<IAuthor>> = AxiosApi.post(
+        `/author`,
+        {
+          ...payload,
+        }
+      );
+      return request;
     },
   },
 };
