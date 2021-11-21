@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=UnifrakturMaguntia&display=swap');
+.navBar {
+  height: 100%;
+  width: 12rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(214, 214, 214);
+  overflow: auto;
+  padding: 1.125rem;
+  z-index: 3;
+  transition: 0.3s;
+
+  
+  &.mobile {
+      width: 100%;
+      .logo {
+          font-size: 3rem;
+        }
+        
+        .menuList {
+            align-items: center;
+        }
+    }
+
+    &.closed {
+        left: -100%;
+    }
+    
+
+
+.buttonClose {
+    display: flex;
+    justify-content: flex-end;
+}
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        font-size: 1.6rem;
+
+        strong {
+            font-family: 'UnifrakturCook', cursive;
+        }
+    }
+
+    .menuList {
+        height: 40rem;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        
+        button {
+            color: black;
+            margin-bottom: 1rem;
+        }
+    }
+}

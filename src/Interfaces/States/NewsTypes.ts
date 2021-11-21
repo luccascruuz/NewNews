@@ -4,4 +4,5 @@ export interface INews {
   caption: string;
   text: string;
   authorId: string;
+  createdAt: string;
 }
