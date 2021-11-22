@@ -35,7 +35,7 @@ export function Card({ news }: IProps) {
   return (
     <div className={styles.card}>
       {!loading && (
-        <Link to={`${news.id}`}>
+        <Link to={`/${news.id}`}>
           <div className={styles.cardText}>
             <h1>{news.title}</h1>
             <div className={styles.cardInfo}>
