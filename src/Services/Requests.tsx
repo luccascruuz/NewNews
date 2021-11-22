@@ -29,6 +29,23 @@ const Requests = {
       });
       return request;
     },
+
+    updateNews: (payload: IPayloadNews, id: string) => {
+      const request: Promise<IResponseRequest<INews>> = AxiosApi.put(
+        `/news/${id}`,
+        {
+          ...payload,
+        }
+      );
+      return request;
+    },
+
+    removeNews: (id: string) => {
+      const request: Promise<IResponseRequest<INews>> = AxiosApi.delete(
+        `/news/${id}`
+      );
+      return request;
+    },
   },
 
   author: {

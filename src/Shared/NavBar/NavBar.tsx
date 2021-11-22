@@ -50,7 +50,7 @@ export function NavBar() {
             Adicionar autor
           </Button>
         </Link>
-        <Link to="searchNews">
+        <Link to="search-news">
           <Button onClick={() => dispatch(navBarOpened(!openNavBar))}>
             Buscar notícia
           </Button>
