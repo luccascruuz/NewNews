@@ -7,6 +7,7 @@ import { MediaQueryMobile } from "./Constants";
 import { AddAuthor } from "./Pages/AddAuthor.tsx/AddAuthor";
 import { AddNews } from "./Pages/AddNews/AddNews";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
+import { News } from "./Pages/News/News";
 import { RootState } from "./Reducers";
 import { NavBar } from "./Shared/NavBar/NavBar";
 
@@ -32,7 +33,9 @@ export function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="newNews" element={<AddNews />} />
+          <Route path="newNews/:id" element={<AddNews />} />
           <Route path="newAuthor" element={<AddAuthor />} />
+          <Route path="/:id" element={<News />} />
         </Routes>
       </div>
     </BrowserRouter>

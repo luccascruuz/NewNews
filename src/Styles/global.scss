@@ -17,6 +17,7 @@ h1 {
 p {
     font-size: 1rem;
     text-align: start;
+    padding: 1rem;
 }
 
 a {
@@ -52,7 +53,7 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
 
-    .position-buttons {
-        text-align: right !important;
-    }
+}
+.position-buttons {
+    text-align: right !important;
 }

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Button, Dropdown, Form, Header, Icon, Popup } from "semantic-ui-react";
 import { IOptionsAuthor, IPayloadNews } from "../../Interfaces/DataTypes";
 import Requests from "../../Services/Requests";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
+import { INews } from "../../Interfaces/States/NewsTypes";
 
 interface IFormeValue {
   title: string;
@@ -14,19 +15,42 @@ interface IFormeValue {
 
 export function AddNews() {
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  const [news, setNews] = useState<INews>();
   const [optionsAuthors, setOptionsAuthors] = useState<IOptionsAuthor[]>([]);
   const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     register,
     control,
+    setValue,
     formState: { errors },
   } = useForm<IFormeValue>();
 
   useEffect(() => {
     setLoading(true);
+    if (id) {
+      getNewsId(id);
+    }
     allAuthors();
   }, []);
+
+  async function getNewsId(id: string) {
+    try {
+      const response = (await Requests.news.getNewsId(id)).data;
+
+      if (response) {
+        setNews(response);
+        setValue("title", response.title);
+        setValue("text", response.text);
+        setValue("authorId", response.authorId);
+      }
+    } catch (err) {
+      setLoading(false);
+      console.error(err);
+    }
+  }
 
   async function allAuthors() {
     try {
@@ -49,6 +73,18 @@ export function AddNews() {
     }
   }
 
+  async function removeNews(id: string) {
+    try {
+      setLoading(true);
+      await Requests.news.removeNews(id);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      console.error(err);
+    }
+  }
+
   async function handleSubmitNewNews(data: IFormeValue) {
     try {
       setLoading(true);
@@ -60,11 +96,14 @@ export function AddNews() {
         ...data,
       };
 
-      const response = (await Requests.news.addNews(payload)).data;
-
-      if (response) {
-        navigate("/");
+      if (news) {
+        await Requests.news.updateNews(payload, news.id);
+      } else {
+        await Requests.news.addNews(payload);
       }
+
+      navigate("/");
+
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -74,7 +113,7 @@ export function AddNews() {
 
   return (
     <div className="container-form">
-      <Header size="huge">Adicionar notícia</Header>
+      <Header size="huge">{`${news ? "Editar" : "Adicionar"}`} notícia</Header>
       <Form onSubmit={handleSubmit(handleSubmitNewNews)}>
         <Form.Group widths="equal">
           <Form.Field>
@@ -150,13 +189,27 @@ export function AddNews() {
             Cancelar
           </Button>
 
+          {news ? (
+            <Button
+              type="button"
+              color="red"
+              onClick={() => {
+                removeNews(news.id);
+                navigate("/");
+              }}
+              disabled={loading}
+            >
+              Excluir
+            </Button>
+          ) : null}
+
           <Button
             type="submit"
             color="green"
             loading={loading}
             disabled={loading}
           >
-            Adicionar
+            {news ? "Editar" : "Adicionar"}
           </Button>
         </div>
       </Form>
