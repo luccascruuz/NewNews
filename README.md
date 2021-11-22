@@ -46,6 +46,7 @@ Na page de pesquisa você poderá pesquisar qualquer texto, e as notícias relac
     <img alt="Letmeask" src=".github/searchNews.png" />
 </h1>
 
+O restante das funcionalidades são bastante intuitivas.
 
 ## 🔖 Layout
 
