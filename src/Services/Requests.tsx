@@ -46,6 +46,13 @@ const Requests = {
       );
       return request;
     },
+
+    searchNews: (text: string) => {
+      const request: Promise<IResponseRequest<INews[]>> = AxiosApi.get(
+        `/news?q=${text}`
+      );
+      return request;
+    },
   },
 
   author: {

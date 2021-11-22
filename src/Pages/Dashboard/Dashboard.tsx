@@ -5,13 +5,19 @@ import { Loader } from "semantic-ui-react";
 import { Card } from "../../Components/Cards/Card";
 import styles from "./styles.module.scss";
 
-export function Dashboard() {
+interface IProps {
+  newsSearch?: INews[];
+}
+
+export function Dashboard({ newsSearch }: IProps) {
   const [news, setNews] = useState<INews[]>();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    allNews();
+    if (!newsSearch) {
+      setLoading(true);
+      allNews();
+    }
   }, []);
 
   async function allNews() {
@@ -31,9 +37,11 @@ export function Dashboard() {
         <Loader size="big" active />
       ) : (
         <div className={styles.listNews}>
-          {news?.map((notice) => (
-            <Card news={notice} key={notice.id}/>
-          ))}
+          {newsSearch
+            ? newsSearch?.map((notice) => (
+                <Card news={notice} key={notice.id} />
+              ))
+            : news?.map((notice) => <Card news={notice} key={notice.id} />)}
         </div>
       )}
     </div>
